@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiWeb.DataContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace HiWeb.Controllers
 {
     public class HomeController : Controller
     {
+        IRepository _respository;
+
+        public HomeController(IRepository repository)
+        {
+            _respository = repository;
+        }
+
         public ActionResult Index()
         {
             return View();

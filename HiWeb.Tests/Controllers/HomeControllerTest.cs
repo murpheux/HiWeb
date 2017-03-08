@@ -8,17 +8,45 @@ using HiWeb;
 using HiWeb.Controllers;
 using Xunit;
 using Shouldly;
+using FakeItEasy;
+using HiWeb.DataContext;
 
 namespace HiWeb.Tests.Controllers
 {
-    //[TestClass]
     public class HomeControllerTest
     {
+
+        IRepository fakeRespository;
+        HomeController targetController;
+
+        public HomeControllerTest()
+        {
+            fakeRespository = A.Fake<IRepository>();
+
+            //mimic operations
+            A.CallTo(() => fakeRespository.DoAnotherThing()).Returns("Done");
+            A.CallTo(() => fakeRespository.SayHello()).Returns("Hello Murpheux");
+
+            targetController = new HomeController(fakeRespository);
+        }
+
+        [Fact, Trait("Repository", "fake")]
+        public void Repository_DoAnotherThing()
+        {
+            fakeRespository.DoAnotherThing().ShouldBe("Done");
+        }
+
+        [Fact, Trait("Repository", "fake")]
+        public void Repository_DoSomething()
+        {
+            fakeRespository.SayHello().ShouldBe("Hello Murpheux");
+        }
+
         [Fact]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = targetController;
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -32,7 +60,7 @@ namespace HiWeb.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = targetController;
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -47,7 +75,7 @@ namespace HiWeb.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller =targetController;
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
@@ -55,6 +83,17 @@ namespace HiWeb.Tests.Controllers
             // Assert
             //Assert.NotNull(result);
             result.ShouldNotBe(null);
+        }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(0)]
+        [InlineData(1)]
+        public void ReturnFalseGivenValuesLessThan2(int value)
+        {
+            var result = false;
+
+            result.ShouldBe(false);
         }
     }
 }
