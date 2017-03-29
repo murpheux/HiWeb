@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiWeb", "HiWeb\HiWeb.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiWeb.Tests", "HiWeb.Tests\HiWeb.Tests.csproj", "{EF2F38B9-2299-4071-8D42-64C25BB758DD}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{87080AC6-D095-47E8-A763-48A3633F5E7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EF2F38B9-2299-4071-8D42-64C25BB758DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF2F38B9-2299-4071-8D42-64C25BB758DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF2F38B9-2299-4071-8D42-64C25BB758DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87080AC6-D095-47E8-A763-48A3633F5E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87080AC6-D095-47E8-A763-48A3633F5E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87080AC6-D095-47E8-A763-48A3633F5E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87080AC6-D095-47E8-A763-48A3633F5E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

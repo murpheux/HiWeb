@@ -23,13 +23,19 @@ namespace HiWeb.Tests.Controllers
         [Fact, Trait("Service", "Ops")]
         public void Service_DoA()
         {
-            serviceController.DoA().ShouldBe("A");
+            serviceController.DoSomething().ShouldBe("A");
         }
 
         [Fact, Trait("Service", "Ops")]
         public void Service_DoB()
         {
-            serviceController.DoB().ShouldBe("B");
+            serviceController.DoAnotherThing().ShouldBe("B");
+        }
+
+        [Fact, Trait("Service", "Ops")]
+        public void Service_DoC()
+        {
+            serviceController.DoSomeOtherThing().ShouldBe("C");
         }
 
     }

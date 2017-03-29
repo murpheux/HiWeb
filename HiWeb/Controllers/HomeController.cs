@@ -1,4 +1,5 @@
 ﻿using HiWeb.DataContext;
+using HiWeb.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,14 @@ namespace HiWeb.Controllers
     public class HomeController : Controller
     {
         IRepository _respository;
+        ILogger _logger;
 
-        public HomeController(IRepository repository)
+        public HomeController() { }
+
+        public HomeController(IRepository repository, ILogger logger)
         {
             _respository = repository;
+            _logger = logger;
         }
 
         public ActionResult Index()

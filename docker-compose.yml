@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  hiweb:
+    image: hiweb
+    build:
+      context: .\HiWeb
+      dockerfile: Dockerfile

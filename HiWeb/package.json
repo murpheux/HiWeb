@@ -10,5 +10,6 @@
     "gulp-uglify": "2.0.1",
     "sass": "0.5.0",
     "less": "2.7.2"
-  }
+  },
+  "scripts": { "test": "tap test/\\*.js" }
 }

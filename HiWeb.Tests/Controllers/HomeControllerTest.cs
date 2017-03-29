@@ -9,7 +9,7 @@ using HiWeb.Controllers;
 using Xunit;
 using Shouldly;
 using FakeItEasy;
-using HiWeb.DataContext;
+using HiWeb.Interface;
 
 namespace HiWeb.Tests.Controllers
 {
@@ -17,6 +17,7 @@ namespace HiWeb.Tests.Controllers
     {
 
         IRepository fakeRespository;
+        ILogger fakeLogger;
         HomeController targetController;
 
         public HomeControllerTest()
@@ -27,7 +28,11 @@ namespace HiWeb.Tests.Controllers
             A.CallTo(() => fakeRespository.DoAnotherThing()).Returns("Done");
             A.CallTo(() => fakeRespository.SayHello()).Returns("Hello Murpheux");
 
-            targetController = new HomeController(fakeRespository);
+            fakeLogger = A.Fake<ILogger>();
+
+            A.CallTo(() => fakeLogger.LogMessage(""));
+
+            targetController = new HomeController(fakeRespository, fakeLogger);
         }
 
         [Fact, Trait("Repository", "fake")]

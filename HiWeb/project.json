@@ -1,0 +1,6 @@
+﻿{
+  "scripts": {
+    "postbundle": [ "npm install", "bower install" ],
+    "postpack": "npm install"
+  }
+}
