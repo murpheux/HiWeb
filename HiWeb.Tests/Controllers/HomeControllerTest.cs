@@ -10,6 +10,10 @@ using Xunit;
 using Shouldly;
 using FakeItEasy;
 using HiWeb.Interface;
+using System.Data.SqlClient;
+using HiWeb.DataContext;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace HiWeb.Tests.Controllers
 {
@@ -17,7 +21,9 @@ namespace HiWeb.Tests.Controllers
     {
 
         IRepository fakeRespository;
-        ILogger fakeLogger;
+        ILoggerFactory fakeLogger;
+        IOptions<dynamic> fakeOptions;
+
         HomeController targetController;
 
         public HomeControllerTest()
@@ -28,11 +34,10 @@ namespace HiWeb.Tests.Controllers
             A.CallTo(() => fakeRespository.DoAnotherThing()).Returns("Done");
             A.CallTo(() => fakeRespository.SayHello()).Returns("Hello Murpheux");
 
-            fakeLogger = A.Fake<ILogger>();
+            fakeLogger = A.Fake<ILoggerFactory>();
 
-            A.CallTo(() => fakeLogger.LogMessage(""));
-
-            targetController = new HomeController(fakeRespository, fakeLogger);
+            //A.CallTo(() => fakeLogger.LogMessage(""));
+            targetController = new HomeController(fakeRespository, fakeLogger, null);
         }
 
         [Fact, Trait("Repository", "fake")]
@@ -99,6 +104,42 @@ namespace HiWeb.Tests.Controllers
             var result = false;
 
             result.ShouldBe(false);
+        }
+
+        [Fact]
+        public void Test1()
+        {
+            // In-memory database only exists while the connection is open
+            var connection = new SqlConnection("DataSource=:memory:");
+            connection.Open();
+
+            try
+            {
+                //var options = new DbContextOptionsBuilder<RepositoryContext>()
+                //    .UseSqlite(connection)
+                //    .Options;
+
+                // Create the schema in the database
+                using (var context = new RepositoryContext()) // options))
+                {
+                    //context.Database.EnsureCreated();
+                }
+
+                // Run the test against one instance of the context
+                using (var context = new RepositoryContext())// options))
+                {
+                }
+
+                // Use a separate instance of the context to verify correct data was saved to database
+                using (var context = new RepositoryContext())// options))
+                {
+                    context.Students.Count().ShouldBe(1);
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

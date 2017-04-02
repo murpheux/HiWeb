@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Shouldly;
 using Xunit;
+using System.Data.SqlClient;
 
 namespace HiWeb.Tests.Controllers
 {
@@ -37,6 +38,8 @@ namespace HiWeb.Tests.Controllers
         {
             serviceController.DoSomeOtherThing().ShouldBe("C");
         }
+
+        
 
     }
 }

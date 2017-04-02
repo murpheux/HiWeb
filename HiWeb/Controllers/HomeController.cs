@@ -1,5 +1,8 @@
 ﻿using HiWeb.DataContext;
 using HiWeb.Interface;
+using HiWeb.Models.Domain;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +11,11 @@ using System.Web.Mvc;
 
 namespace HiWeb.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        IRepository _respository;
-        ILogger _logger;
-
-        public HomeController() { }
-
-        public HomeController(IRepository repository, ILogger logger)
-        {
-            _respository = repository;
-            _logger = logger;
-        }
+        //public HomeController(IRepository repository, ILoggerFactory loggerFactory, IOptions<AppKeyConfig> appkeys)
+        //    : base(repository, loggerFactory, appkeys)
+        //{ }
 
         public ActionResult Index()
         {

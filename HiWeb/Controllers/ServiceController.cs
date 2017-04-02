@@ -40,29 +40,29 @@ namespace HiWeb.Controllers
         }
 
 
-        //[HttpGet]
-        //public async Task<string> DoJson()
-        //{
-        //    Task<string> task = Task.Factory.StartNew(() =>
-        //    {
-        //        return JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}").ToString(Formatting.None);
-        //    });
-        //    await task;
+        [HttpGet]
+        public async Task<string> DoJson2()
+        {
+            Task<string> task = Task.Factory.StartNew(() =>
+            {
+                return JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}").ToString(Formatting.None);
+            });
+            await task;
 
-        //    return task.Result;
-        //}
+            return task.Result;
+        }
 
-        //[HttpGet]
-        //public async Task<JObject> DoJson()
-        //{
-        //    Task<JObject> task = Task.Factory.StartNew(() =>
-        //    {
-        //        return JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}");
-        //    });
-        //    await task;
+        [HttpGet]
+        public async Task<JObject> DoJson()
+        {
+            Task<JObject> task = Task.Factory.StartNew(() =>
+            {
+                return JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}");
+            });
+            await task;
 
-        //    return task.Result;
-        //}
+            return task.Result;
+        }
 
         [HttpGet]
         public IEnumerable<Student> List()

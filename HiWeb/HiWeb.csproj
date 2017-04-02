@@ -171,19 +171,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
-    <Compile Include="Interface\ILogger.cs" />
-    <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Controllers\Util.cs" />
+    <Compile Include="DataContext\DataContext.cs" />
+    <Compile Include="DataContext\SeedData.cs" />
+    <Compile Include="Models\Domain\AppKeyConfig.cs" />
+    <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="DataContext\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\SubjectTest.cs" />
+    <Compile Include="Models\Domain\Person.cs" />
+    <Compile Include="Models\Domain\Student.cs" />
+    <Compile Include="Models\Domain\SubjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AppLogger.cs" />
+    <Compile Include="Services\CacheServices.cs" />
+    <Compile Include="Services\ICache.cs" />
+    <Compile Include="Services\IEmailSender.cs" />
+    <Compile Include="Services\ISmsSender.cs" />
+    <Compile Include="Services\MessageServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -214,6 +222,7 @@
     <None Include="commands.json" />
     <Content Include="nlog.config" />
     <None Include="Dockerfile" />
+    <None Include="Properties\PublishProfiles\Host_IIS.pubxml" />
     <None Include="Properties\PublishProfiles\Local_IIS.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -251,6 +260,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="logs\" />
+    <Folder Include="Models\Repository\" />
+    <Folder Include="Models\Security\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

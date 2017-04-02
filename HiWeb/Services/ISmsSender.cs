@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace HiWeb.Interface
+namespace HiMVC.Services
 {
-    public interface ILogger
+    public interface ISmsSender
     {
-
-        void LogMessage(string message);
+        Task SendSmsAsync(string number, string message);
     }
 }
