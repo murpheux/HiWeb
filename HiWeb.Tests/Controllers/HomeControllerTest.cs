@@ -37,7 +37,7 @@ namespace HiWeb.Tests.Controllers
             fakeLogger = A.Fake<ILoggerFactory>();
 
             //A.CallTo(() => fakeLogger.LogMessage(""));
-            targetController = new HomeController(fakeRespository, fakeLogger, null);
+            targetController = new HomeController();// fakeRespository, fakeLogger, null);
         }
 
         [Fact, Trait("Repository", "fake")]
@@ -141,5 +141,6 @@ namespace HiWeb.Tests.Controllers
                 connection.Close();
             }
         }
+
     }
 }

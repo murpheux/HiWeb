@@ -186,12 +186,15 @@
     <Compile Include="Models\Domain\Person.cs" />
     <Compile Include="Models\Domain\Student.cs" />
     <Compile Include="Models\Domain\SubjectTest.cs" />
+    <Compile Include="Models\Ioc\AppControllerFactory.cs" />
+    <Compile Include="Models\Ioc\AppDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CacheServices.cs" />
-    <Compile Include="Services\ICache.cs" />
-    <Compile Include="Services\IEmailSender.cs" />
-    <Compile Include="Services\ISmsSender.cs" />
+    <Compile Include="Models\Interfaces\ICache.cs" />
+    <Compile Include="Models\Interfaces\IEmailSender.cs" />
+    <Compile Include="Models\Interfaces\ISmsSender.cs" />
     <Compile Include="Services\MessageServices.cs" />
+    <Compile Include="ViewModel\StudentModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -219,6 +222,7 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <Content Include="bower.json" />
     <None Include="commands.json" />
     <Content Include="nlog.config" />
     <None Include="Dockerfile" />
@@ -256,10 +260,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Add.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="logs\" />
     <Folder Include="Models\Repository\" />
     <Folder Include="Models\Security\" />
   </ItemGroup>

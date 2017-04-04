@@ -9,7 +9,8 @@
     "gulp-concat": "2.6.1",
     "gulp-uglify": "2.0.1",
     "sass": "0.5.0",
-    "less": "2.7.2"
+    "less": "2.7.2",
+    "bower": "1.8.0"
   },
   "scripts": { "test": "tap test/\\*.js" }
 }

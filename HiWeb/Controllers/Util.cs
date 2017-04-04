@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace HiWeb.Controllers
@@ -15,22 +16,40 @@ namespace HiWeb.Controllers
         public static void SendEmail(string[] recipients, string subject, string message)
         {
             var client = new SmtpClient();
-            var mailMmessage = new MailMessage();
+            var mailMessage = new MailMessage();
 
-            mailMmessage.Subject = subject;
-            mailMmessage.Body = message;
-            mailMmessage.IsBodyHtml = true;
+            mailMessage.Subject = subject;
+            mailMessage.Body = message;
+            mailMessage.IsBodyHtml = true;
 
             foreach (var recipient in recipients)
-                mailMmessage.To.Add(recipient);
+                mailMessage.To.Add(recipient);
 
             try
             {
-                client.Send(mailMmessage);
+                client.Send(mailMessage);
             }
             catch (Exception)
             {}
 
+        }
+
+        public static async Task SendEmailAsync(string[] recipients, string subject, string message)
+        {
+            using (var smtp = new SmtpClient("localhost"))
+            {
+                var mailMmessage = new MailMessage
+                {
+                    Subject = subject,
+                    //From = new MailAddress(email),
+                    Body = message
+                };
+
+                foreach (var recipient in recipients)
+                    mailMmessage.To.Add(recipient);
+
+                await smtp.SendMailAsync(mailMmessage);
+            }
         }
 
 

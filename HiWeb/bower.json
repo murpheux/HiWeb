@@ -1,0 +1,14 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "directory" : "Scripts",
+  "dependencies": {
+
+    "jquery-ui": "1.12.1",
+    "angular": "1.6.4",
+    "boostrap": "3.3.7",
+    "font-awesome": "3.3.7",
+    "hammer.js": "2.0.8"
+
+  }
+}
