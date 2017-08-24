@@ -2,6 +2,7 @@
 using HiWeb.DataContext;
 using HiWeb.Interface;
 using HiWeb.Models.Ioc;
+using HiWeb.ViewModel;
 using Microsoft.Extensions.Logging;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
@@ -26,6 +27,8 @@ namespace HiWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            MVCGridConfig.RegisterGrids();
 
             // IOC
             var container = new Container();

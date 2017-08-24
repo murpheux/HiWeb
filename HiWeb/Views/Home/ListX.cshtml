@@ -1,0 +1,24 @@
+﻿@using MVCGrid.Web;
+
+@model IEnumerable<HiWeb.ViewModel.StudentModel>
+
+@{
+    ViewBag.Title = "List-X";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @Html.Partial("_MVCGridToolbar", new HiWeb.ViewModel.MVCGridToolbarModel()
+       {
+           MVCGridName = "HiWebGrid",
+           PageSize = true,
+           ColumnVisibility = true,
+           Export = true,
+           GlobalSearch = true
+       })
+
+        @Html.MVCGrid("HiWebGrid")
+    </div>
+</div>
+

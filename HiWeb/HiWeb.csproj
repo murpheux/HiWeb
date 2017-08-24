@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -177,6 +177,7 @@
     <Compile Include="Controllers\Util.cs" />
     <Compile Include="DataContext\DataContext.cs" />
     <Compile Include="DataContext\SeedData.cs" />
+    <Compile Include="Filters\AppRequireSSL.cs" />
     <Compile Include="Models\Domain\AppKeyConfig.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="DataContext\Repository.cs" />
@@ -194,6 +195,8 @@
     <Compile Include="Models\Interfaces\IEmailSender.cs" />
     <Compile Include="Models\Interfaces\ISmsSender.cs" />
     <Compile Include="Services\MessageServices.cs" />
+    <Compile Include="ViewModel\MVCGridConfig.cs" />
+    <Compile Include="ViewModel\MVCGridToolbarModel.cs" />
     <Compile Include="ViewModel\StudentModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +265,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Home\ListX.cshtml" />
+    <Content Include="Views\Shared\_MVCGridToolbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

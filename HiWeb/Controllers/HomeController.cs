@@ -33,7 +33,20 @@ namespace HiWeb.Controllers
             return View();
         }
 
+        public ActionResult ListX()
+        {
+            return View(GetList());
+        }
+
         public ActionResult List()
+        {
+            
+
+            return View(GetList());
+        }
+
+
+        public List<StudentModel> GetList()
         {
             var list = new List<StudentModel>
             {
@@ -41,19 +54,19 @@ namespace HiWeb.Controllers
                 new StudentModel() { Name = "Seun Bukari", Sex = "F", Age = 22 }
             };
 
-            return View(list);
+            return list;
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Hiweb -> The Defender of the App World.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "HiWeb contact page.";
 
             return View();
         }

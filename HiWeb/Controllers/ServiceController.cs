@@ -1,17 +1,13 @@
 ﻿using HiWeb.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace HiWeb.Controllers
 {
-    //[Route("api/v1")]
+    [System.Web.Mvc.RequireHttps, System.Web.Mvc.HandleError]
     public class ServiceController : ApiController
     {
         [HttpGet]
@@ -43,10 +39,7 @@ namespace HiWeb.Controllers
         [HttpGet]
         public async Task<string> DoJson2()
         {
-            Task<string> task = Task.Factory.StartNew(() =>
-            {
-                return JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}").ToString(Formatting.None);
-            });
+            var task = Task.Factory.StartNew(() => JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}").ToString(Formatting.None));
             await task;
 
             return task.Result;
@@ -55,10 +48,7 @@ namespace HiWeb.Controllers
         [HttpGet]
         public async Task<JObject> DoJson()
         {
-            Task<JObject> task = Task.Factory.StartNew(() =>
-            {
-                return JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}");
-            });
+            var task = Task.Factory.StartNew(() => JObject.Parse("{'Service Name' : 'Murpheux Service v1.0'}"));
             await task;
 
             return task.Result;
@@ -67,10 +57,12 @@ namespace HiWeb.Controllers
         [HttpGet]
         public IEnumerable<Student> List()
         {
-            var list = new List<Student>();
+            var list = new List<Student>
+            {
+                new Student() {Lastname = "Onawole", Othernames = "Clement"},
+                new Student() {Lastname = "Adewole", Othernames = "Francis"}
+            };
 
-            list.Add(new Student() { Lastname = "Onawole", Othernames = "Clement" });
-            list.Add(new Student() { Lastname = "Adewole", Othernames = "Francis" });
 
             return list;
         }
